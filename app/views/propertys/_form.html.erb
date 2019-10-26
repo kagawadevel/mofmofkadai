@@ -1,0 +1,40 @@
+<%= form_for(property, url: choose_new_or_edit) do |f| %>
+  <% if property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= propert.errors.count %>件のエラーがあります</h2>
+
+      <ul>
+        <% property.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <div><%= f.label :name %></div>
+    <div><%= f.text_field :name %></div>
+  </div>
+
+  <div class="field">
+    <div><%= f.label :rent %></div>
+    <div><%= f.number_field :rent %>円</div>
+  </div>
+
+  <div class="field">
+    <div><%= f.label :address %></div>
+    <div><%= f.text_field :address %></div>
+  </div>
+
+  <div class="field">
+    <div><%= f.label :age %></div>
+    <div><%= f.number_field :age %>年</div>
+  </div>
+
+  <div class="field">
+    <div><%= f.label :remarks %></div>
+    <div><%= f.text_field :remarks %></div>
+  </div>
+
+
+<% end %>
