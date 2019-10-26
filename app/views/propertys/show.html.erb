@@ -1,2 +1,29 @@
-<h1>Propertys#show</h1>
-<p>Find me in app/views/propertys/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p class="field">
+  <strong>物件名:</strong>
+  <%= @property.name %>
+</p>
+
+<p class="field">
+  <strong>家賃：</strong>
+  <%= @property.rent %>円
+</p>
+
+<p class="field">
+  <strong>物件住所：</strong>
+  <%= @property.address %>
+</p>
+
+<p class="field">
+  <strong>築年数：</strong>
+  <%= @property.age %>年
+</p>
+
+<p class="field">
+  <strong>備考：</strong>
+  <%= @property.remarks %>
+</p>
+
+<%= link_to '編集する', edit_property_path(@property) %>
+<%= link_to '戻る', property_path %>
