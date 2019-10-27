@@ -12,8 +12,10 @@ class PropertysController < ApplicationController
   def new
     if params[:back]
       @property = Property.new(property_params)
+      2.times { @property.stations.build }
     else
       @property = Property.new
+      2.times { @property.stations.build }
     end
   end
 
@@ -66,7 +68,14 @@ class PropertysController < ApplicationController
   end
 
   def property_params
-    params.require(:property).permit(:name, :rent, :address, :age, :remarks)
+    params.require(:property).permit(
+      :name,
+      :rent,
+      :address,
+      :age,
+      :remarks,
+      stations_attributes: [:id, :route, :name, :time ]
+    )
   end
 
 end

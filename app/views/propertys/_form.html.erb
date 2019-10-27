@@ -1,7 +1,7 @@
 <%= form_for(property, url: choose_new_or_edit) do |f| %>
   <% if property.errors.any? %>
     <div id="error_explanation">
-      <h2><%= propert.errors.count %>件のエラーがあります</h2>
+      <h2><%= property.errors.count %>件のエラーがあります</h2>
 
       <ul>
         <% property.errors.full_messages.each do |message| %>
@@ -36,6 +36,29 @@
     <div><%= f.text_field :remarks %></div>
   </div>
 
-<%= f.submit '確認画面へ' %>
+  <hr>
+
+  <%= f.fields_for :stations do |station| %>
+
+  <h3>最寄り駅<%= station.index + 1 %></h3>
+
+    <div>
+      <%= station.label :route %>
+      <%= station.text_field :route %>
+    </div>
+
+    <div>
+      <%= station.label :name %>
+      <%= station.text_field :name %>
+    </div>
+
+    <div>
+      <%= station.label :time %>
+      <%= station.number_field :time %>
+    </div>
+
+  <% end %>
+
+<%= f.submit '登録する' %>
 
 <% end %>
