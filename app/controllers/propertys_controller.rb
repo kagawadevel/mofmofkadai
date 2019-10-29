@@ -7,19 +7,16 @@ class PropertysController < ApplicationController
   end
 
   def show
+    2.times { @property.stations.build }
   end
 
   def new
-    if params[:back]
-      @property = Property.new(property_params)
-      2.times { @property.stations.build }
-    else
-      @property = Property.new
-      2.times { @property.stations.build }
-    end
+    @property = Property.new
+    2.times { @property.stations.build }
   end
 
   def edit
+    2.times { @property.stations.build }
   end
 
   def create
@@ -51,14 +48,9 @@ class PropertysController < ApplicationController
   def destroy
     @property.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: '物件情報を削除しました' }
+      format.html { redirect_to propertys_path, notice: '物件情報を削除しました' }
       format.json { head :no_content }
     end
-  end
-
-  def confirm
-    @property = Property.new(property_params)
-    render :new if @property.invalid?
   end
 
   private
