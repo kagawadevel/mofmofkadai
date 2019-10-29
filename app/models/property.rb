@@ -1,7 +1,7 @@
 class Property < ApplicationRecord
 
   has_many :stations, dependent: :destroy
-  accepts_nested_attributes_for :stations
+  accepts_nested_attributes_for :stations, allow_destroy: true
 
   validates :name, presence: true, length: { maximum: 50}
   validates :rent, presence: true, numericality: { only_integer: true}

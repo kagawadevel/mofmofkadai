@@ -21,7 +21,6 @@ class PropertysController < ApplicationController
 
   def create
     @property = Property.new(property_params)
-
     respond_to do |format|
       if @property.save
         format.html {redirect_to @property, notice: '物件情報を登録しました'}
