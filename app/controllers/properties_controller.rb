@@ -1,13 +1,13 @@
-class PropertysController < ApplicationController
+class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :edit, :update, :destroy]
 
 
   def index
-    @propertys = Property.all
+    @properties = Property.all
   end
 
   def show
-    2.times { @property.stations.build }
+
   end
 
   def new
@@ -16,7 +16,6 @@ class PropertysController < ApplicationController
   end
 
   def edit
-    2.times { @property.stations.build }
   end
 
   def create
@@ -47,7 +46,7 @@ class PropertysController < ApplicationController
   def destroy
     @property.destroy
     respond_to do |format|
-      format.html { redirect_to propertys_path, notice: '物件情報を削除しました' }
+      format.html { redirect_to properties_path, notice: '物件情報を削除しました' }
       format.json { head :no_content }
     end
   end
