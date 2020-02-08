@@ -16,6 +16,10 @@ class PropertiesController < ApplicationController
   end
 
   def edit
+    if @property.stations.last.name == ""
+    else
+      1.times { @property.stations.build }
+    end
   end
 
   def create
@@ -33,7 +37,7 @@ class PropertiesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @property.save
+      if @property.update(property_params)
         format.html {redirect_to @property, notice: '物件情報を更新しました'}
         format.json { render :show, status: :created, location: @property}
       else
